@@ -1,4 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
+import { TabContext } from "../Providers/TabProvider";
+import { DogContext } from "../Providers/DogProvider";
 
 export const Section = ({
   label,
@@ -8,6 +10,15 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
+  const {
+    isFavoriteActive,
+    setIsFavoriteActive,
+    isNotFavoriteActive,
+    setIsNotFavoriteActive,
+    isCreateDogActive,
+    setIsCreateDogActive,
+  } = useContext(TabContext);
+  const { dogs } = useContext(DogContext);
   return (
     <section id="main-section">
       <div className="container-header">
@@ -15,27 +26,45 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${"active"}`}
+            className={`selector ${isFavoriteActive ? "active" : ""}`}
             onClick={() => {
-              alert("click favorited");
+              if (!isFavoriteActive) {
+                setIsFavoriteActive(true);
+                setIsNotFavoriteActive(false);
+                setIsCreateDogActive(false);
+              } else {
+                setIsFavoriteActive(false);
+              }
             }}
           >
-            favorited ( {0} )
+            favorited ( {dogs.filter((dog) => dog.isFavorite).length} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${""}`}
+            className={`selector ${isNotFavoriteActive ? "active" : ""}`}
             onClick={() => {
-              alert("click unfavorited");
+              if (!isNotFavoriteActive) {
+                setIsNotFavoriteActive(true);
+                setIsFavoriteActive(false);
+                setIsCreateDogActive(false);
+              } else {
+                setIsNotFavoriteActive(false);
+              }
             }}
           >
-            unfavorited ( {10} )
+            unfavorited ( {dogs.filter((dog) => !dog.isFavorite).length} )
           </div>
           <div
-            className={`selector ${""}`}
+            className={`selector ${isCreateDogActive ? "active" : ""}`}
             onClick={() => {
-              alert("clicked create dog");
+              if (!isCreateDogActive) {
+                setIsCreateDogActive(true);
+                setIsFavoriteActive(false);
+                setIsNotFavoriteActive(false);
+              } else {
+                setIsCreateDogActive(false);
+              }
             }}
           >
             create dog

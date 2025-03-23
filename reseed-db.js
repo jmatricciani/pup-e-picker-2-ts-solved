@@ -7,12 +7,13 @@ const sample = _.sample;
 
 const dogAmount = 20;
 const images = [
-  "/assets/blue-heeler.png",
-  "/assets/chihuahua.avif",
-  "/assets/boxer.png",
-  "/assets/corgi.png",
-  "/assets/cowardly.png",
-  "/assets/dalmation.png",
+  //Added public as parent directory to make the new path work
+  "public/assets/blue-heeler.png",
+  "public/assets/chihuahua.avif",
+  "public/assets/boxer.png",
+  "public/assets/corgi.png",
+  "public/assets/cowardly.png",
+  "public/assets/dalmation.png",
 ];
 const db = {
   dogs: range(dogAmount).map((_, id) => ({
