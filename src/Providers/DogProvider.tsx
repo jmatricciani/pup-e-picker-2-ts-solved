@@ -1,14 +1,15 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { Dog } from "../types";
+import { Dog } from "../Types/types";
 import toast from "react-hot-toast";
 import { Requests } from "../api";
+import { handleError } from "../Types/errors";
 
 export type TDogContext = {
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   dogs: Dog[];
   setDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
-  addDog: (dog: Omit<Dog, "id">) => void;
+  addDog: (dog: Omit<Dog, "id">) => Promise<void>;
   deleteDog: (id: number) => void;
   updateDog: (id: number, isFavorite: boolean) => void;
 };
@@ -20,25 +21,29 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    refetchData().catch((error) => console.log(error));
+    refetchData().catch((error) => handleError(error));
   }, []);
 
-  const refetchData = () => {
-    return Requests.getAllDogs().then(setDogs);
+  const refetchData = async () => {
+    setDogs(await Requests.getAllDogs());
   };
 
-  const addDog = (dog: Omit<Dog, "id">) => {
+  const addDog = async (dog: Omit<Dog, "id">) => {
     setIsLoading(true);
-    Requests.postDog(dog)
-      .then(refetchData)
-      .then(() => toast.success("Dog Created"))
-      .finally(() => setIsLoading(false));
+    await Requests.postDog(dog);
+    await refetchData();
+    toast.success("Dog Created");
+    setIsLoading(false);
   };
 
   const deleteDog = (id: number) => {
     setDogs(dogs.filter((dog) => dog.id !== id));
-    Requests.deleteDogRequest(id).catch((error) => {
-      console.log(error);
+    Requests.deleteDogRequest(id).catch((error: unknown) => {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        console.error(error);
+      }
       setDogs(dogs);
     });
   };
@@ -50,7 +55,11 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
       )
     );
     Requests.patchFavoriteForDog(id, isFavorite).catch((error) => {
-      console.log(error);
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        console.error(error);
+      }
       setDogs(dogs);
     });
   };

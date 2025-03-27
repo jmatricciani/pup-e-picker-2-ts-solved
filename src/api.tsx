@@ -1,4 +1,4 @@
-import { Dog } from "./types";
+import { Dog } from "./Types/types";
 
 export const baseUrl = "http://localhost:3000";
 

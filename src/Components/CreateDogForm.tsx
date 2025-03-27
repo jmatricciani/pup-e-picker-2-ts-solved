@@ -16,7 +16,7 @@ export const CreateDogForm = () =>
         id="create-dog-form"
         onSubmit={(e) => {
           e.preventDefault();
-          addDog({
+          void addDog({
             name: name,
             image: selectedImage,
             description: description,

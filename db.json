@@ -1,1 +1,151 @@
-{"dogs":[{"name":"Waldo","image":"public/assets/cowardly.png","description":"Shirt Intersex Wagon JBOD Bronze Analyst Massachusetts SAS","isFavorite":false,"id":0},{"name":"Tracey","image":"public/assets/blue-heeler.png","description":"Fresh Bedfordshire Licensed override copy Mississippi Northeast West","isFavorite":false,"id":1},{"name":"Ola","image":"public/assets/chihuahua.avif","description":"asymmetric Infrastructure scene quantify female","isFavorite":false,"id":2},{"name":"Princess","image":"public/assets/boxer.png","description":"arc Producer Versatile Accounts East withdrawal ubiquitous Wagon","isFavorite":true,"id":3},{"name":"Elfrieda","image":"public/assets/blue-heeler.png","description":"Handcrafted Virginia EXE override um Jon aha South","isFavorite":true,"id":4},{"name":"Adah","image":"public/assets/chihuahua.avif","description":"Fluorine Southwest farad Pants Northwest turquoise Kub","isFavorite":false,"id":5},{"name":"Louie","image":"public/assets/boxer.png","description":"radian after Tin now Volvo","isFavorite":false,"id":6},{"name":"Price","image":"public/assets/corgi.png","description":"Southwest application Centers interfaces architecto","isFavorite":true,"id":7},{"name":"Dorian","image":"public/assets/blue-heeler.png","description":"matrices withdrawal Kyat South Convertible experiences deposit","isFavorite":true,"id":8},{"name":"Joshuah","image":"public/assets/dalmation.png","description":"Hybrid Bronze schemas deliver TLS Shirt Hybrid woman","isFavorite":false,"id":9},{"name":"Della","image":"public/assets/boxer.png","description":"Beauty Thallium Recycled underneath Soft which invoice","isFavorite":false,"id":10},{"name":"Adah","image":"public/assets/boxer.png","description":"Northeast stained Account Plaza meter evolve Plastic","isFavorite":true,"id":11},{"name":"Enrico","image":"public/assets/boxer.png","description":"overlap overriding Principal per Hanna","isFavorite":false,"id":12},{"name":"Anika","image":"public/assets/cowardly.png","description":"Cis East Buckinghamshire Wyoming indeed mint Northeast turquoise","isFavorite":true,"id":13},{"name":"Guillermo","image":"public/assets/cowardly.png","description":"Electric male Personal Factors male teal Cheese Kazakhstan","isFavorite":false,"id":14},{"name":"Willard","image":"public/assets/boxer.png","description":"cyan South Quality Specialist transform","isFavorite":true,"id":15},{"name":"Ashlynn","image":"public/assets/corgi.png","description":"calmly Northwest Northeast Van quizzical","isFavorite":false,"id":16},{"name":"Nigel","image":"public/assets/boxer.png","description":"experiences reinvent Southeast Unbranded Uruguayo Gender generate","isFavorite":true,"id":17},{"name":"Rita","image":"public/assets/blue-heeler.png","description":"into as Xenogender Colorado Granite Ouguiya Loan similique","isFavorite":false,"id":18},{"name":"Haleigh","image":"public/assets/boxer.png","description":"Focused niches Hayes Versatile Arizona","isFavorite":false,"id":19}]}
+{
+  "dogs": [
+    {
+      "name": "Beth",
+      "image": "public/assets/chihuahua.avif",
+      "description": "eveniet however short Shoes Global transparent aggregate Bicycle",
+      "isFavorite": false,
+      "id": 0
+    },
+    {
+      "name": "Rashawn",
+      "image": "public/assets/boxer.png",
+      "description": "portal Iraq sensor Borders orderly",
+      "isFavorite": false,
+      "id": 1
+    },
+    {
+      "name": "Megane",
+      "image": "public/assets/chihuahua.avif",
+      "description": "junior Som evolve superficial installation withdrawal Bohrium",
+      "isFavorite": false,
+      "id": 2
+    },
+    {
+      "name": "Randall",
+      "image": "public/assets/chihuahua.avif",
+      "description": "Tricycle Blues West Card Concrete bypassing Tennessee",
+      "isFavorite": false,
+      "id": 3
+    },
+    {
+      "name": "Juliet",
+      "image": "public/assets/blue-heeler.png",
+      "description": "ASCII Checking West Electric Ergonomic feed Diesel",
+      "isFavorite": false,
+      "id": 4
+    },
+    {
+      "name": "Jimmy",
+      "image": "public/assets/cowardly.png",
+      "description": "uniform Southeast quantify Rhodium Buckinghamshire",
+      "isFavorite": false,
+      "id": 5
+    },
+    {
+      "name": "Patience",
+      "image": "public/assets/corgi.png",
+      "description": "Computers up nisi Hybrid blue",
+      "isFavorite": false,
+      "id": 6
+    },
+    {
+      "name": "Rowan",
+      "image": "public/assets/dalmation.png",
+      "description": "Usability parse Strategist Product Gasoline orchid magni MTF",
+      "isFavorite": false,
+      "id": 7
+    },
+    {
+      "name": "Ophelia",
+      "image": "public/assets/boxer.png",
+      "description": "Singapore Diesel Pants although Van smoothly Chicken",
+      "isFavorite": false,
+      "id": 8
+    },
+    {
+      "name": "Angelica",
+      "image": "public/assets/blue-heeler.png",
+      "description": "Concrete Southwest simplistic Sri Hatchback regional Chicken Concrete",
+      "isFavorite": false,
+      "id": 9
+    },
+    {
+      "name": "Brandy",
+      "image": "public/assets/chihuahua.avif",
+      "description": "voluptates Electric Pickup green magenta",
+      "isFavorite": false,
+      "id": 10
+    },
+    {
+      "name": "Ashleigh",
+      "image": "public/assets/boxer.png",
+      "description": "OCR hmph Fiat Loan Hatchback",
+      "isFavorite": false,
+      "id": 11
+    },
+    {
+      "name": "Sydnee",
+      "image": "public/assets/boxer.png",
+      "description": "male Pakistan Sedan Bedfordshire Trans",
+      "isFavorite": false,
+      "id": 12
+    },
+    {
+      "name": "Maymie",
+      "image": "public/assets/blue-heeler.png",
+      "description": "application on Borders Guarani Cotton innovate opposite",
+      "isFavorite": false,
+      "id": 13
+    },
+    {
+      "name": "Sincere",
+      "image": "public/assets/dalmation.png",
+      "description": "interface jealously PNG alarm encompassing",
+      "isFavorite": false,
+      "id": 14
+    },
+    {
+      "name": "Gerald",
+      "image": "public/assets/boxer.png",
+      "description": "Polarised Concrete Hop wireless PCI aggregate initiatives scale",
+      "isFavorite": false,
+      "id": 15
+    },
+    {
+      "name": "Carmine",
+      "image": "public/assets/chihuahua.avif",
+      "description": "duh Palladium CSS Dollar as fort channels",
+      "isFavorite": false,
+      "id": 16
+    },
+    {
+      "name": "Monique",
+      "image": "public/assets/chihuahua.avif",
+      "description": "IB schemas Jordan Gasoline haptic amongst Granite",
+      "isFavorite": false,
+      "id": 17
+    },
+    {
+      "name": "Nikko",
+      "image": "public/assets/dalmation.png",
+      "description": "Non Parkways executive JBOD honored Northeast yahoo",
+      "isFavorite": false,
+      "id": 18
+    },
+    {
+      "name": "Lupe",
+      "image": "public/assets/boxer.png",
+      "description": "Future invoice Handmade parallelism California bypassing Security",
+      "isFavorite": false,
+      "id": 19
+    },
+    {
+      "name": "Moglee",
+      "image": "/assets/corgi.png",
+      "description": "Is a super cool dog!",
+      "isFavorite": true,
+      "id": 20
+    }
+  ]
+}
