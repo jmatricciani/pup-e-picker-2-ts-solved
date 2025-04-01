@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const dogSchema = z.object({
   id: z.number(),
@@ -9,3 +9,5 @@ export const dogSchema = z.object({
 });
 
 export type Dog = z.infer<typeof dogSchema>;
+
+export type TTab = 'none' | 'favorited' | 'unfavorited' | 'createDog';

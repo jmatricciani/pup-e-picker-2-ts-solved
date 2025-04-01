@@ -1,15 +1,20 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { Dog } from "../Types/types";
-import toast from "react-hot-toast";
-import { Requests } from "../api";
-import { handleError } from "../Types/errors";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { Dog } from '../Types/types';
+import toast from 'react-hot-toast';
+import { Requests } from '../api';
+import { handleError } from '../Types/errors';
+import { UIContext } from './UIProvider';
 
 export type TDogContext = {
-  isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   dogs: Dog[];
   setDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
-  addDog: (dog: Omit<Dog, "id">) => Promise<void>;
+  addDog: (dog: Omit<Dog, 'id'>) => Promise<void>;
   deleteDog: (id: number) => void;
   updateDog: (id: number, isFavorite: boolean) => void;
 };
@@ -18,21 +23,24 @@ export const DogContext = createContext<TDogContext>({} as TDogContext);
 
 export const DogProvider = ({ children }: { children: ReactNode }) => {
   const [dogs, setDogs] = useState<Dog[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { setIsLoading } = useContext(UIContext);
 
   useEffect(() => {
     refetchData().catch((error) => handleError(error));
   }, []);
 
+  //Was unsure if these methods needed to be exported into a different file
+  //I attempted to put them into api.ts, but they could not access state variables at the top level
+
   const refetchData = async () => {
     setDogs(await Requests.getAllDogs());
   };
 
-  const addDog = async (dog: Omit<Dog, "id">) => {
+  const addDog = async (dog: Omit<Dog, 'id'>) => {
     setIsLoading(true);
     await Requests.postDog(dog);
     await refetchData();
-    toast.success("Dog Created");
+    toast.success('Dog Created');
     setIsLoading(false);
   };
 
@@ -67,8 +75,6 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
   return (
     <DogContext.Provider
       value={{
-        isLoading,
-        setIsLoading,
         dogs,
         setDogs,
         addDog,

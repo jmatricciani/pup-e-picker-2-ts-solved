@@ -1,6 +1,6 @@
-import { ReactNode, useContext } from "react";
-import { TabContext } from "../Providers/TabProvider";
-import { DogContext } from "../Providers/DogProvider";
+import { ReactNode, useContext } from 'react';
+import { DogContext } from '../Providers/DogProvider';
+import { UIContext } from '../Providers/UIProvider';
 
 export const Section = ({
   label,
@@ -10,31 +10,20 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const {
-    isFavoriteActive,
-    setIsFavoriteActive,
-    isNotFavoriteActive,
-    setIsNotFavoriteActive,
-    isCreateDogActive,
-    setIsCreateDogActive,
-  } = useContext(TabContext);
+  const { activeTab, setActiveTab } = useContext(UIContext);
   const { dogs } = useContext(DogContext);
   return (
-    <section id="main-section">
-      <div className="container-header">
-        <div className="container-label">{label}</div>
-        <div className="selectors">
+    <section id='main-section'>
+      <div className='container-header'>
+        <div className='container-label'>{label}</div>
+        <div className='selectors'>
           {/* This should display the favorited count */}
           <div
-            className={`selector ${isFavoriteActive ? "active" : ""}`}
+            className={`selector ${activeTab === 'favorited' ? 'active' : ''}`}
             onClick={() => {
-              if (!isFavoriteActive) {
-                setIsFavoriteActive(true);
-                setIsNotFavoriteActive(false);
-                setIsCreateDogActive(false);
-              } else {
-                setIsFavoriteActive(false);
-              }
+              activeTab !== 'favorited'
+                ? setActiveTab('favorited')
+                : setActiveTab('none');
             }}
           >
             favorited ( {dogs.filter((dog) => dog.isFavorite).length} )
@@ -42,36 +31,30 @@ export const Section = ({
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${isNotFavoriteActive ? "active" : ""}`}
+            className={`selector ${
+              activeTab === 'unfavorited' ? 'active' : ''
+            }`}
             onClick={() => {
-              if (!isNotFavoriteActive) {
-                setIsNotFavoriteActive(true);
-                setIsFavoriteActive(false);
-                setIsCreateDogActive(false);
-              } else {
-                setIsNotFavoriteActive(false);
-              }
+              activeTab !== 'unfavorited'
+                ? setActiveTab('unfavorited')
+                : setActiveTab('none');
             }}
           >
             unfavorited ( {dogs.filter((dog) => !dog.isFavorite).length} )
           </div>
           <div
-            className={`selector ${isCreateDogActive ? "active" : ""}`}
+            className={`selector ${activeTab === 'createDog' ? 'active' : ''}`}
             onClick={() => {
-              if (!isCreateDogActive) {
-                setIsCreateDogActive(true);
-                setIsFavoriteActive(false);
-                setIsNotFavoriteActive(false);
-              } else {
-                setIsCreateDogActive(false);
-              }
+              activeTab !== 'createDog'
+                ? setActiveTab('createDog')
+                : setActiveTab('none');
             }}
           >
             create dog
           </div>
         </div>
       </div>
-      <div className="content-container">{children}</div>
+      <div className='content-container'>{children}</div>
     </section>
   );
 };

@@ -1,27 +1,32 @@
 // Right now these dogs are constant, but in reality we should be getting these from our server
 
-import { useContext } from "react";
-import { DogCard } from "./DogCard";
-import { TabContext } from "../Providers/TabProvider";
-import { DogContext } from "../Providers/DogProvider";
+import { useContext } from 'react';
+import { DogCard } from './DogCard';
+import { DogContext } from '../Providers/DogProvider';
+import { UIContext } from '../Providers/UIProvider';
 
 // Todo: Refactor to get rid of props (THERE SHOULD BE NO PROPS DRILLING ON THIS COMPONENT)
 export const Dogs = () =>
   // no props allowed
   {
-    const { isFavoriteActive, isNotFavoriteActive, isCreateDogActive } =
-      useContext(TabContext);
-    const { dogs, deleteDog, updateDog, isLoading } = useContext(DogContext);
+    const { activeTab, isLoading } = useContext(UIContext);
+    const { dogs, deleteDog, updateDog } = useContext(DogContext);
     return (
       //  the "<> </>"" are called react fragments, it's like adding all the html inside
       // without adding an actual html element
       <>
         {dogs
           .filter((dog) => {
-            if (isFavoriteActive) return dog.isFavorite;
-            else if (isNotFavoriteActive) return !dog.isFavorite;
-            else if (isCreateDogActive) return false;
-            else return dog;
+            switch (activeTab) {
+              case 'favorited':
+                return dog.isFavorite;
+              case 'unfavorited':
+                return !dog.isFavorite;
+              case 'createDog':
+                return false;
+              case 'none':
+                return dog;
+            }
           })
           .map((dog) => (
             <DogCard
