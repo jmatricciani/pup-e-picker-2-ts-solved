@@ -29,9 +29,6 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
     refetchData().catch((error) => handleError(error));
   }, []);
 
-  //Was unsure if these methods needed to be exported into a different file
-  //I attempted to put them into api.ts, but they could not access state variables at the top level
-
   const refetchData = async () => {
     setDogs(await Requests.getAllDogs());
   };

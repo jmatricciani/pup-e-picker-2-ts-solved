@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { defaultSelectedImage, dogPictures } from '../dog-pictures';
 import { DogContext } from '../Providers/DogProvider';
 import { UIContext } from '../Providers/UIProvider';
+import toast from 'react-hot-toast';
+import { validateForm } from '../Types/errors';
 
 export const CreateDogForm = () =>
   // no props allowed
@@ -12,21 +14,38 @@ export const CreateDogForm = () =>
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
+    const resetForm = () => {
+      setName('');
+      setDescription('');
+      setSelectedImage(defaultSelectedImage);
+    };
+
     return (
       <form
         action=''
         id='create-dog-form'
         onSubmit={(e) => {
           e.preventDefault();
-          void addDog({
-            name: name,
-            image: selectedImage,
-            description: description,
-            isFavorite: false,
-          });
-          setName('');
-          setDescription('');
-          setSelectedImage(defaultSelectedImage);
+          try {
+            if (validateForm(name, description)) {
+              void addDog({
+                name: name,
+                image: selectedImage,
+                description: description,
+                isFavorite: false,
+              });
+              resetForm();
+            }
+          } catch (errors) {
+            //Struggled a little with this in typescript as the error from the catch block comes as type any or unknown
+            //I found that putting the array into a seperate variable and using the "as" keyword is a work around
+            //I know Jon says to avoid using the "as" keyword as much as possible, but I hope this is acceptable since
+            //we know that we are throwing an Error[]
+            const displayErrors: Error[] = errors as Error[];
+            displayErrors.forEach((error) => {
+              toast.error(error.message);
+            });
+          }
         }}
       >
         <h4>Create a New Dog</h4>

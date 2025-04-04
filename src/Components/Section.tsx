@@ -17,7 +17,6 @@ export const Section = ({
       <div className='container-header'>
         <div className='container-label'>{label}</div>
         <div className='selectors'>
-          {/* This should display the favorited count */}
           <div
             className={`selector ${activeTab === 'favorited' ? 'active' : ''}`}
             onClick={() => {
@@ -29,7 +28,6 @@ export const Section = ({
             favorited ( {dogs.filter((dog) => dog.isFavorite).length} )
           </div>
 
-          {/* This should display the unfavorited count */}
           <div
             className={`selector ${
               activeTab === 'unfavorited' ? 'active' : ''
